@@ -174,7 +174,8 @@ class RequestHandler(BaseHTTPServer.BaseHTTPRequestHandler):
         content = self.Error_Page.format(path=self.path, msg=msg)
         self.send_content(content, 404)
 
-    # Send actual content.
+    # Send actual content.                                 #REVIEW  the author of BaseHTTPRequestHandler use inheritance to hilde lower level details of socket from use
+                                                        #           we only have to call send_response, send_header etc.
     def send_content(self, content, status=200):
         self.send_response(status)
         self.send_header("Content-type", "text/html")
